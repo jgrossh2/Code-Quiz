@@ -43,22 +43,50 @@ var questions = [
     },
 ];
 
+// function startTest() {
+//     //when button is clicked, timer begins
+//     var score = 0;
 function startTest() {
-    //when button is clicked, timer begins
+        //when button is clicked, timer begins
     var score = 0;
-    //when button is clicked, ask questions one by one
-    for (var i = 0; i < questions.length; i++) {
-        var answer = confirm(questions[i].q);
-        if 
-            (answer === true) 
-        {
-            //score increases with correct answer
-            score++;
-        }else {
-            score--;
-        }
-        }
+    var questionContainerElement = document.createElement("div")
+    var questionElement = document.createElement("div")
+    var answerAElement = document.createElement("div")
+    var answerBElement = document.createElement("div")
+    var answerCElement = document.createElement("div")
+    var answerDElement = document.createElement("div")
+    
+    questionElement.textContent = questions[0].q
+    answerAElement.textContent= questions[0].a
+    answerBElement.textContent = questions[0].b
+    answerCElement.textContent = questions[0].c
+    answerDElement.textContent = questions [0].d
+
+
+    
+    questionContainerElement.appendChild(questionElement)
+    questionContainerElement.appendChild(answerAElement)
+    questionContainerElement.appendChild(answerBElement)
+    questionContainerElement.appendChild(answerCElement)
+    questionContainerElement.appendChild(answerDElement)
+
+    // questionContainerElement.appendChild(button);
+
+    document.querySelector("body").appendChild(questionContainerElement)
 };
+    //when button is clicked, ask questions one by one
+//     for (var i = 0; i < questions.length; i++) {
+//         var answer = confirm(questions[i].q);
+//         if 
+//             (answer === true) 
+//         {
+//             //score increases with correct answer
+//             score++;
+//         }else {
+//             score--;
+//         }
+        
+// };
 // display question
 
 // display answer
