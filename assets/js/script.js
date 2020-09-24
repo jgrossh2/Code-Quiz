@@ -1,6 +1,5 @@
 var startBtn = document.querySelector('#start');
 var timerEl = document.getElementById('countdown');
-
 var questions = [
     {
         q:'A ____ is a predefined action that can be called or used later in the code.',
@@ -44,11 +43,7 @@ var questions = [
     },
 ];
 
-// function elem(x) {
-//     return document.getElementById(x);
-// }
 function startTest() {
-    // test = elem("test");
     //when button is clicked, timer begins
     var score = 0;
     //when button is clicked, ask questions one by one
@@ -67,42 +62,42 @@ function startTest() {
 // display question
 
 // display answer
-var btn = document.createElement("button");
-btn.innerHTML = "a";
+// var btn = document.createElement("button");
+// btn.innerHTML = "a";
 
 
-// //timer function
-// function timerCount() {
-//     // start time at 60 sec
-//     var timer = 60;
-//     //set timer to decrease
-//     var timeInterval = setInterval(function() {
-//         // if timer is above 0, then decrease by 1
-//         if (timer > 0) {
-//             timer--;
-//         // if incorrect answer, lose 10 sec
-//         } 
-//         // if timer is 0, stop interval
-//         else if (timer ===0) {
-//             clearInterval(timeInterval);
-//             timerEl.textContent = 'Quiz over';
-//             diplayMessage()
-//             highScore();
-//         }
-//     }, 1000);
+// timer function
+function timerCount() {
+    // start time at 60 sec
+    timerEl = 60;
+    //set timer to decrease
+    var timeInterval = setInterval(function() {
+        // if timer is above 0, then decrease by 1
+        if (timerEl > 0) {
+            timerEl--;
+        // if incorrect answer, lose 10 sec
+        } 
+        // if timer is 0, stop interval
+        else if (timerEl ===0) {
+            clearInterval(timeInterval);
+            timerEl.textContent = 'Quiz over';
+            // diplayMessage()
+            // highScore();
+        }
+    }, 1000);
 
-// }
+}
 // //display message for answers
 // // function displayMessage(type, message) {
 
 // }
 //user input to high Score
-function highScore() {
+// function highScore() {
 //your score is
 //input saved name
 //save to local storage
 
-}
+
 //start function for quiz
 
 //if answer correct, then told correct!
@@ -112,6 +107,6 @@ function highScore() {
 //when questions are done, quiz over
 //high score input
 //store high score
-// start();
-startBtn.addEventListener("click", start);
-btn.addEventListener ("click", function() );
+timerCount();
+startBtn.addEventListener("click", startTest);
+// btn.addEventListener ("click", function())
