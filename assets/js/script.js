@@ -4,7 +4,7 @@ var choiceEl = document.getElementById('choices');
 // var answerElements = ['answerAElement', 'answerBElement', 'answerCElement', 'answerDElement'];
 var currentQuestionIndex = 0;
 var choiceSelection = document.createElement("button");
-
+// var userA = this.getAttribute('data-value');
 var questions = [
     {
         q:'A ____ is a predefined action that can be called or used later in the code.',
@@ -52,7 +52,6 @@ var questions = [
         answer:'function expression'
     },
 ];
-var answers = questions.choices;
 
 function getQuestion() {
     var currentQuestion = questions[currentQuestionIndex]
@@ -63,31 +62,39 @@ function getQuestion() {
         var choiceSelection = document.createElement("button")
         choiceSelection.setAttribute('class', 'choice')
         choiceSelection.setAttribute('value', choice)
+        choiceSelection.setAttribute('data-value', choice)
         choiceSelection.textContent = choice;
         choiceEl.appendChild(choiceSelection);
 
     });
 }   
-function displayMessage() {
-
-    if (answers === questions[i].answer) {
-        displayMessage('success', 'Correct!');
+choiceEl.addEventListener("click", myFunction);
+    function myFunction() {
+    var score = 0;
+    var userA = this.getAttribute('data-value')
+    if (userA === true && question[i].answer === true ) {
+        alert('Correct!');
         score++;
     }
     else {
-        (!answers === questions[i].answer) 
-        ('Wrong!');
+        alert('Wrong!');
         score--;
     }
+    }
+    
+// function displayMessage() {
 
-};
+
+
+// };
 
 function startTest() {
     var score = 0;
-    var startScreenEl = document.getElementById('start-screen');
-    startScreenEl.setAttribute('class', 'hide');
+    // var startScreenEl = document.getElementById('start-screen');
+    // startScreenEl.setAttribute('class', 'hide');
+    document.getElementById('start-screen').style.visibility = 'hidden';
     timerEl.textContent = 60
-    document.querySelector("body").appendChild(answerContainerElement)
+    // document.querySelector("body").appendChild(answerContainerElement)
     getQuestion();
     // displayMessage();
 };   
@@ -148,7 +155,6 @@ function timerCount() {
 //store high score
 
  //when button is clicked, timer begins
-//  answers.addEventListener("click", displayMessage)
 startBtn.addEventListener("click", timerCount);
 startBtn.addEventListener("click", startTest);
 // answerElements.addEventListener("click", displayMessage);
