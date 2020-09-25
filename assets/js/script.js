@@ -1,89 +1,110 @@
 var startBtn = document.querySelector('#start');
 var timerEl = document.getElementById('countdown');
+var choiceEl = document.getElementById('choices');
 var answerElements = ['answerAElement', 'answerBElement', 'answerCElement', 'answerDElement'];
+var currentQuestionIndex = 0,
 var questions = [
     {
         q:'A ____ is a predefined action that can be called or used later in the code.',
-        a: 'function', 
-        b: 'alert', 
-        c: 'prompt',
-        d: 'loop',
-        answer: 'a'
+        choices: [ 
+        'function', 
+        'alert', 
+        'prompt',
+        'loop'],
+        answer: 'function'
     },
     {
         q:'In "function win() {}", "win" is the ______',
-        a: 'function keyword',
-        b: 'function name',
-        c: 'expression',
-        d: 'argument',
-        answer: 'b'
+        choices : [
+        'function keyword',
+        'function name',
+        'expression',
+        'argument'],
+        answer: 'function name'
     },
     {
         q:'The code between _____ is called a code block.',
-        a: 'parentheses',
-        b: 'brackets',
-        c: 'curly braces',
-        d: 'quotations',
-        answer: 'c'
+        choices : [
+        'parentheses',
+        'brackets',
+        'curly braces',
+        'quotations'],
+        answer: 'curly braces'
     },
     {
         q:'Which are examples of a data type?',
-        a:'string',
-        b: 'boolean',
-        c: 'integer',
-        d: 'all of the above',
-        answer: 'd'
+        choices : [
+        'string',
+        'boolean',
+        'integer',
+        'all of the above'],
+        answer: 'all of the above'
     },
     {
         q:'" var win = function() {} " is an example of', 
-        a:'function declaration',
-        b: 'function expression',
-        c: 'none of the above',
-        d: 'all of the above',
-        answer:'b'
+        choices : [
+        'function declaration',
+        'function expression',
+        'none of the above',
+        'all of the above'],
+        answer:'function expression'
     },
 ];
+function getQuestion() {
+    var currentQuestion = questions[currentQuestionIndex]
+    var titleEl = document.getElementById('question-title')
+    titleEl.textContent = currentQuestion.q
+    choiceEl.innerHTML = ''
+    currentQuestion.choices.forEach(function(choice, i) {
+        var choiceSelection = document.createElement("button")
+        choiceSelection.setAttribute('class', 'choice')
+        choiceSelection.setAttribute('value', choice)
+        choiceSelection.textContent = i + 1 + '.' + choice;
+        choiceEl.appendChild(choiceSelection);
+
+    });
+}
 
 function startTest() {
     var score = 0;
-    
-    for (var i = 0; i < questions.length; i++) {
-    var questionContainerElement = document.createElement("div")
-    var answerContainerElement = document.createElement("ul")
-    var questionElement = document.createElement("div")
-    var answerAElement = document.createElement("BUTTON")
-    var answerBElement = document.createElement("BUTTON")
-    var answerCElement = document.createElement("BUTTON")
-    var answerDElement = document.createElement("BUTTON")
-    var buttonAElement = document.createElement("BUTTON");
-    buttonAElement.innerHTML = questions[i].a;
-    
-    
+    var startScreenEl = document.getElementById('start-screen')
+    startScreenEl.setAttribute('class', 'hide')
+    timerEl.textContent = 60
+    // loop to display questions
+    // for (var i = 0; i < questions.length; i++) {
+//     var questionContainerElement = document.createElement("div")
+//     var answerContainerElement = document.createElement("ul")
+//     var questionElement = document.createElement("div")
+//     var answerAElement = document.createElement("BUTTON")
+//     var answerBElement = document.createElement("BUTTON")
+//     var answerCElement = document.createElement("BUTTON")
+//     var answerDElement = document.createElement("BUTTON")
+//     var buttonAElement = document.createElement("BUTTON");
+//     buttonAElement.innerHTML = questions[i].a;
+//     buttonAElement.addEventListener("click", function() {
+//         // textMessage("correct");
+//     });
+//     questionElement.textContent = questions[i].q
+//     answerAElement.textContent= questions[i].a
+//     answerBElement.textContent = questions[i].b
+//     answerCElement.textContent = questions[i].c
+//     answerDElement.textContent = questions [i].d
 
-    buttonAElement.addEventListener("click", function() {
-        // textMessage("correct");
-    });
-    questionElement.textContent = questions[i].q
-    answerAElement.textContent= questions[i].a
-    answerBElement.textContent = questions[i].b
-    answerCElement.textContent = questions[i].c
-    answerDElement.textContent = questions [i].d
+//     questionContainerElement.appendChild(questionElement)
+//     questionContainerElement.appendChild(answerAElement)
+//     questionContainerElement.appendChild(answerBElement)
+//     questionContainerElement.appendChild(answerCElement)
+//     questionContainerElement.appendChild(answerDElement)
 
-    questionContainerElement.appendChild(questionElement)
-    questionContainerElement.appendChild(answerAElement)
-    questionContainerElement.appendChild(answerBElement)
-    questionContainerElement.appendChild(answerCElement)
-    questionContainerElement.appendChild(answerDElement)
-    
-    // questionContainerElement.appendChild(button);
-
-    document.querySelector("body").appendChild(questionContainerElement)
-    document.querySelector("body").appendChild(answerContainerElement)
-};   
+//     document.querySelector("body").appendChild(questionContainerElement)
+//     document.querySelector("body").appendChild(answerContainerElement)
+    getQuestion();
+// };   
 };
-//     function displayMessage() {
+// message for correct or wrong answer
+// function displayMessage() {
     
-//     if (answer = true) {
+//     if (answer === true) {
 //         displayMessage('Correct!');
 //         score++;
 //     }
@@ -92,25 +113,6 @@ function startTest() {
 //         score--;
 //     }
 // };
-    //when button is clicked, ask questions one by one
-//     for (var i = 0; i < questions.length; i++) {
-//         var answer = confirm(questions[i].q);
-//         if 
-//             (answer === true) 
-//         {
-//             //score increases with correct answer
-//             score++;
-//         }else {
-//             score--;
-//         }
-        
-// };
-// display question
-
-// display answer
-// var btn = document.createElement("button");
-// btn.innerHTML = "a";
-
 
 // timer function
 function timerCount() {
@@ -128,7 +130,6 @@ function timerCount() {
         if (timeLeft === 0) {
             clearInterval(timeInterval);
             timerEl.textContent = 'Quiz over';
-            // diplayMessage()
             // highScore();
             }
         }, 1000);
@@ -139,25 +140,34 @@ function timerCount() {
 
 // }
 //user input to high Score
-// function highScore() {
+// function highScoreList() {
+//     var score = correctAnswers;
+//     var highscore = localStorage.getItem('highscore', highscore)
+//     var name = localStorage.getItem('name')
+//     var highScoreElement = document.createElement('div')
+//     var submitBtn = document.createElement('BUTTON')
+
+   
+//    document.querySelector('body').appendChild(highScoreElement)
+//    submitBtn.textContent = 'submit';
+
+//    function highScore() {}
+//    submitBtn.addEventListener("click", function(event) {
+//         preventDefault();
+
+
+
+//         localStorage.setItem('highscore', highscore)
+//         localStorage.setItem('name')
+//    });
 //your score is
 //input saved name
 //save to local storage
-
-
-//start function for quiz
-
-//if answer correct, then told correct!
-//if answer incorrect, then told wrong!
-//if answer is incorrect, then 10 sec less on timer
-//when timer hits 0, timer stops
-//when questions are done, quiz over
 //high score input
 //store high score
-// timerCount();
 
  //when button is clicked, timer begins
+
 startBtn.addEventListener("click", timerCount);
 startBtn.addEventListener("click", startTest);
-// answerElements.addEventListener("click", displayMessage)
-
+// answerElements.addEventListener("click", displayMessage);
