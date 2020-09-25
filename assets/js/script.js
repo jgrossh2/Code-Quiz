@@ -84,7 +84,7 @@ function startTest() {
     document.querySelector("body").appendChild(questionContainerElement)
     document.querySelector("body").appendChild(answerContainerElement)
 };   
-
+};
 //     function displayMessage() {
     
 //     if (answer = true) {
@@ -136,8 +136,8 @@ function timerCount() {
                 // highScore();
             }
         }, 1000);
-    }   
-};
+    };  
+
 // //display message for answers
 // // function displayMessage(type, message) {
 
