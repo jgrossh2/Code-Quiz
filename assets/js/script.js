@@ -1,10 +1,11 @@
 var startBtn = document.querySelector('#start');
 var timerEl = document.getElementById('countdown');
+var answerElements = ['answerAElement', 'answerBElement', 'answerCElement', 'answerDElement'];
 var questions = [
     {
         q:'A ____ is a predefined action that can be called or used later in the code.',
-        a: 'function',
-        b: 'alert',
+        a: 'function', 
+        b: 'alert', 
         c: 'prompt',
         d: 'loop',
         answer: 'a'
@@ -52,12 +53,20 @@ function startTest() {
     
     for (var i = 0; i < questions.length; i++) {
     var questionContainerElement = document.createElement("div")
+    var answerContainerElement = document.createElement("ul")
     var questionElement = document.createElement("div")
-    var answerAElement = document.createElement("div")
-    var answerBElement = document.createElement("div")
-    var answerCElement = document.createElement("div")
-    var answerDElement = document.createElement("div")
+    var answerAElement = document.createElement("BUTTON")
+    var answerBElement = document.createElement("BUTTON")
+    var answerCElement = document.createElement("BUTTON")
+    var answerDElement = document.createElement("BUTTON")
+    var buttonAElement = document.createElement("BUTTON");
+    buttonAElement.innerHTML = questions[i].a;
     
+    
+
+    buttonAElement.addEventListener("click", function() {
+        // textMessage("correct");
+    });
     questionElement.textContent = questions[i].q
     answerAElement.textContent= questions[i].a
     answerBElement.textContent = questions[i].b
@@ -73,9 +82,20 @@ function startTest() {
     // questionContainerElement.appendChild(button);
 
     document.querySelector("body").appendChild(questionContainerElement)
-    }
-};
+    document.querySelector("body").appendChild(answerContainerElement)
+};   
 
+//     function displayMessage() {
+    
+//     if (answer = true) {
+//         displayMessage('Correct!');
+//         score++;
+//     }
+//     else {
+//         displayMessage('Wrong!');
+//         score--;
+//     }
+// };
     //when button is clicked, ask questions one by one
 //     for (var i = 0; i < questions.length; i++) {
 //         var answer = confirm(questions[i].q);
@@ -99,24 +119,25 @@ function startTest() {
 // timer function
 function timerCount() {
     // start time at 60 sec
-    timerEl = 60;
+    timerEl.textContent = 'Timer = 60';
     //set timer to decrease
     var timeInterval = setInterval(function() {
-        // if timer is above 0, then decrease by 1
-        if (timerEl > 0) {
-            timerEl--;
-        // if incorrect answer, lose 10 sec
-        } 
-        // if timer is 0, stop interval
-        else if (timerEl ===0) {
-            clearInterval(timeInterval);
-            timerEl.textContent = 'Quiz over';
-            // diplayMessage()
-            // highScore();
-        }
-    }, 1000);
-
-}
+            // timerEl.textContent = 'Timer = 60';
+            // if timer is above 0, then decrease by 1
+            if (timerEl > 0) {
+                timerEl--;
+            // if incorrect answer, lose 10 sec
+            } 
+            // if timer is 0, stop interval
+            else if (timerEl === 0) {
+                clearInterval(timeInterval);
+                timerEl.textContent = 'Quiz over';
+                // diplayMessage()
+                // highScore();
+            }
+        }, 1000);
+    }   
+};
 // //display message for answers
 // // function displayMessage(type, message) {
 
@@ -137,6 +158,8 @@ function timerCount() {
 //when questions are done, quiz over
 //high score input
 //store high score
-timerCount();
+// timerCount();
+startBtn.addEventListener("click", timerCount);
 startBtn.addEventListener("click", startTest);
-// btn.addEventListener ("click", function())
+// answerElements.addEventListener("click", displayMessage)
+
