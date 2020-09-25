@@ -44,11 +44,7 @@ var questions = [
     },
 ];
 
-// function startTest() {
-//     //when button is clicked, timer begins
-//     var score = 0;
 function startTest() {
-        //when button is clicked, timer begins
     var score = 0;
     
     for (var i = 0; i < questions.length; i++) {
@@ -118,21 +114,22 @@ function startTest() {
 
 // timer function
 function timerCount() {
-    var timeLeft = 60;
-        timerEl.textContent = timeLeft;
     // start time at 60 sec
-    //set timer to decrease
+    var timeLeft = 60;
+    timerEl.textContent = timeLeft;
+
     var timeInterval = setInterval(function() {
-                timeLeft--;
-                timerEl.textContent = timeLeft;
-            // if incorrect answer, lose 10 sec
+        //set timer to decrease
+        timeLeft--;
+        timerEl.textContent = timeLeft;
+        // if incorrect answer, lose 10 sec
             
-            // if timer is 0, stop interval
-            if (timeLeft === 0) {
-                clearInterval(timeInterval);
-                timerEl.textContent = 'Quiz over';
-                // diplayMessage()
-                // highScore();
+        // if timer is 0, stop interval
+        if (timeLeft === 0) {
+            clearInterval(timeInterval);
+            timerEl.textContent = 'Quiz over';
+            // diplayMessage()
+            // highScore();
             }
         }, 1000);
     };  
@@ -158,6 +155,8 @@ function timerCount() {
 //high score input
 //store high score
 // timerCount();
+
+ //when button is clicked, timer begins
 startBtn.addEventListener("click", timerCount);
 startBtn.addEventListener("click", startTest);
 // answerElements.addEventListener("click", displayMessage)
