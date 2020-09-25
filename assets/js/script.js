@@ -118,18 +118,17 @@ function startTest() {
 
 // timer function
 function timerCount() {
+    var timeLeft = 60;
+        timerEl.textContent = timeLeft;
     // start time at 60 sec
-    timerEl.textContent = 'Timer = 60';
     //set timer to decrease
     var timeInterval = setInterval(function() {
-            // timerEl.textContent = 'Timer = 60';
-            // if timer is above 0, then decrease by 1
-            if (timerEl > 0) {
-                timerEl--;
+                timeLeft--;
+                timerEl.textContent = timeLeft;
             // if incorrect answer, lose 10 sec
-            } 
+            
             // if timer is 0, stop interval
-            else if (timerEl === 0) {
+            if (timeLeft === 0) {
                 clearInterval(timeInterval);
                 timerEl.textContent = 'Quiz over';
                 // diplayMessage()
