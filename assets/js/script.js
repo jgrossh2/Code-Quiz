@@ -1,8 +1,10 @@
 var startBtn = document.querySelector('#start');
 var timerEl = document.getElementById('countdown');
 var choiceEl = document.getElementById('choices');
-var answerElements = ['answerAElement', 'answerBElement', 'answerCElement', 'answerDElement'];
+// var answerElements = ['answerAElement', 'answerBElement', 'answerCElement', 'answerDElement'];
 var currentQuestionIndex = 0;
+var choiceSelection = document.createElement("button");
+
 var questions = [
     {
         q:'A ____ is a predefined action that can be called or used later in the code.',
@@ -50,6 +52,8 @@ var questions = [
         answer:'function expression'
     },
 ];
+var answers = questions.choices;
+
 function getQuestion() {
     var currentQuestion = questions[currentQuestionIndex]
     var titleEl = document.getElementById('question-title')
@@ -59,60 +63,37 @@ function getQuestion() {
         var choiceSelection = document.createElement("button")
         choiceSelection.setAttribute('class', 'choice')
         choiceSelection.setAttribute('value', choice)
-        choiceSelection.textContent = i + 1 + '.' + choice;
+        choiceSelection.textContent = choice;
         choiceEl.appendChild(choiceSelection);
 
     });
-}
+}   
+function displayMessage() {
+
+    if (answers === questions[i].answer) {
+        displayMessage('success', 'Correct!');
+        score++;
+    }
+    else {
+        (!answers === questions[i].answer) 
+        ('Wrong!');
+        score--;
+    }
+
+};
 
 function startTest() {
     var score = 0;
     var startScreenEl = document.getElementById('start-screen');
     startScreenEl.setAttribute('class', 'hide');
     timerEl.textContent = 60
-    // loop to display questions
-    // for (var i = 0; i < questions.length; i++) {
-//     var questionContainerElement = document.createElement("div")
-//     var answerContainerElement = document.createElement("ul")
-//     var questionElement = document.createElement("div")
-//     var answerAElement = document.createElement("BUTTON")
-//     var answerBElement = document.createElement("BUTTON")
-//     var answerCElement = document.createElement("BUTTON")
-//     var answerDElement = document.createElement("BUTTON")
-//     var buttonAElement = document.createElement("BUTTON");
-//     buttonAElement.innerHTML = questions[i].a;
-//     buttonAElement.addEventListener("click", function() {
-//         // textMessage("correct");
-//     });
-//     questionElement.textContent = questions[i].q
-//     answerAElement.textContent= questions[i].a
-//     answerBElement.textContent = questions[i].b
-//     answerCElement.textContent = questions[i].c
-//     answerDElement.textContent = questions [i].d
-
-//     questionContainerElement.appendChild(questionElement)
-//     questionContainerElement.appendChild(answerAElement)
-//     questionContainerElement.appendChild(answerBElement)
-//     questionContainerElement.appendChild(answerCElement)
-//     questionContainerElement.appendChild(answerDElement)
-
-//     document.querySelector("body").appendChild(questionContainerElement)
-//     document.querySelector("body").appendChild(answerContainerElement)
+    document.querySelector("body").appendChild(answerContainerElement)
     getQuestion();
-// };   
-};
+    // displayMessage();
+};   
+
 // message for correct or wrong answer
-function displayMessage() {
-    
-    if (questions.choices === answer) {
-        displayMessage('success', 'Correct!');
-        score++;
-    }
-    else {
-        displayMessage('Wrong!');
-        score--;
-    }
-};
+
 
 // timer function
 function timerCount() {
@@ -167,7 +148,7 @@ function timerCount() {
 //store high score
 
  //when button is clicked, timer begins
-
+//  answers.addEventListener("click", displayMessage)
 startBtn.addEventListener("click", timerCount);
 startBtn.addEventListener("click", startTest);
 // answerElements.addEventListener("click", displayMessage);
