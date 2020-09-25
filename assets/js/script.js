@@ -2,7 +2,7 @@ var startBtn = document.querySelector('#start');
 var timerEl = document.getElementById('countdown');
 var choiceEl = document.getElementById('choices');
 var answerElements = ['answerAElement', 'answerBElement', 'answerCElement', 'answerDElement'];
-var currentQuestionIndex = 0,
+var currentQuestionIndex = 0;
 var questions = [
     {
         q:'A ____ is a predefined action that can be called or used later in the code.',
@@ -67,8 +67,8 @@ function getQuestion() {
 
 function startTest() {
     var score = 0;
-    var startScreenEl = document.getElementById('start-screen')
-    startScreenEl.setAttribute('class', 'hide')
+    var startScreenEl = document.getElementById('start-screen');
+    startScreenEl.setAttribute('class', 'hide');
     timerEl.textContent = 60
     // loop to display questions
     // for (var i = 0; i < questions.length; i++) {
@@ -102,17 +102,17 @@ function startTest() {
 // };   
 };
 // message for correct or wrong answer
-// function displayMessage() {
+function displayMessage() {
     
-//     if (answer === true) {
-//         displayMessage('Correct!');
-//         score++;
-//     }
-//     else {
-//         displayMessage('Wrong!');
-//         score--;
-//     }
-// };
+    if (questions.choices === answer) {
+        displayMessage('success', 'Correct!');
+        score++;
+    }
+    else {
+        displayMessage('Wrong!');
+        score--;
+    }
+};
 
 // timer function
 function timerCount() {
