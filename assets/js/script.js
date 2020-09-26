@@ -7,8 +7,15 @@ var choiceSelection = document.createElement("button");
 var messageEl = document.getElementById('message');
 var viewScoresBtn = document.querySelector('#view');
 var nextBtn = document.querySelector('#next');
-var score = 0;
+// var score = 0;
 var timeLeft = 60;
+var timeInterval; 
+var initials;
+var timer = document.querySelector('timer');
+var highScoreMessage = document.querySelector('message');
+var submitBtn = document.createElement('button');
+var submitBtn = document.getElementById('submit');
+var done = document.getElementById('test');
 // var userA = this.getAttribute('data-value');
 var questions = [
     {
@@ -59,6 +66,14 @@ var questions = [
 ];
 
 function getQuestion() {
+    console.log(currentQuestionIndex);
+    console.log(questions.length);
+    console.log(currentQuestion)
+    if (currentQuestionIndex === questions.length) {
+        clearInterval(timeInterval);
+        displayScore();
+    return;
+    }
     messageEl.textContent= '';
     var currentQuestion = questions[currentQuestionIndex]
     var titleEl = document.getElementById('question-title')
@@ -76,8 +91,6 @@ function getQuestion() {
         choiceEl.appendChild(choiceSelection);
 
     });
-
- 
 }   
 choiceEl.addEventListener("click", myFunction);
     function myFunction(event) {
@@ -93,27 +106,17 @@ choiceEl.addEventListener("click", myFunction);
         timeLeft-=10;
     }
     }
-    
-// function displayMessage() {
-
-
-
-// };
 
 function startTest() {
-    var score = 0;
+    // var score = 0;
     // var startScreenEl = document.getElementById('start-screen');
-    // startScreenEl.setAttribute('class', 'hide');
     document.getElementById('start-screen').style.visibility = 'hidden';
+    
     document.getElementById('next').style.visibility = "visible";
     timerEl.textContent = 60
-    // document.querySelector("body").appendChild(answerContainerElement)
+
     getQuestion();
-    // displayMessage();
 };   
-
-// message for correct or wrong answer
-
 
 // timer function
 function timerCount() {
@@ -121,7 +124,7 @@ function timerCount() {
     // var timeLeft = 60;
     timerEl.textContent = timeLeft;
 
-    var timeInterval = setInterval(function() {
+    timeInterval = setInterval(function() {
         //set timer to decrease
         timeLeft--;
         timerEl.textContent = timeLeft;
@@ -130,7 +133,6 @@ function timerCount() {
         if (timeLeft === 0) {
             clearInterval(timeInterval);
             timerEl.textContent = 'Quiz over';
-            // highScore();
             }
         }, 1000);
     };  
@@ -142,40 +144,56 @@ function viewScore() {
 
 
 // display message for answers
-function displayMessage(type, message) {
-
+function displayScore() {
+    console.log('test');
+    document.getElementById('submit').style.visibility = "visible"??
+    document.getElementById('initials').style.visibility = 'visible'??
+    console.log('hiiii');
+    document.querySelector('#question-answer').style.visibility = 'hidden'
+    document.querySelector('#next').style.visibility = 'hidden'
+    
+    console.log('hi');
+    //find var for timerEl value
+    done.textContent = "All done! Your score is " + ""; 
+    
+    var intitials = document.getElementById('initials');
+    localStorage.setItem('initials', initials);
+    // function saveScore() {
+    //     
+    //     localStorage.setItem('high score', timeLeft);
+    // };
 }
 //user input to high Score
-function highScoreList() {
-    var score = correctAnswers;
-    var highscore = localStorage.getItem('highscore', highscore)
-    var name = localStorage.getItem('name')
-    var highScoreElement = document.createElement('div')
-    var submitBtn = document.createElement('BUTTON')
+// function highScoreList() {
+//     var score = correctAnswers;
+//     var highscore = localStorage.getItem('highscore', highscore)
+//     var name = localStorage.getItem('name')
+//     var highScoreElement = document.createElement('div')
+//     var submitBtn = document.createElement('BUTTON')
 
    
-   document.querySelector('body').appendChild(highScoreElement)
-   submitBtn.textContent = 'submit';
+//    document.querySelector('body').appendChild(highScoreElement)
+//    submitBtn.textContent = 'submit';
 
-   function highScore() {}
-   submitBtn.addEventListener("click", function(event) {
-        preventDefault();
+// //    function highScore() {}
+//    submitBtn.addEventListener("click", function(event) {
+//         event.preventDefault();
 
 
 
-        localStorage.setItem('highscore', highscore)
-        localStorage.setItem('name')
-   });
-//your score is
-//input saved name
-//save to local storage
-//high score input
-//store high score
+//         localStorage.setItem('highscore', highscore)
+//         localStorage.setItem('name')
+//    });
+// }
+
 
  //when button is clicked, timer begins
 nextBtn.addEventListener("click", getQuestion);
-viewScoresBtn.addEventListener("click", viewScore)
+viewScoresBtn.addEventListener("click", viewScore);
 startBtn.addEventListener("click", timerCount);
 startBtn.addEventListener("click", startTest);
 document.getElementById('next').style.visibility = 'hidden';
-// answerElements.addEventListener("click", displayMessage);
+document.getElementById('submit').style.visibility = "hidden";
+document.getElementById('initials').style.visibility = 'hidden';
+submitBtn.addEventListener("click", displayScore);
+// highScoreBtn.addEventListener("click", saveScore);
