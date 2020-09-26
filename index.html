@@ -9,12 +9,12 @@
     </head>
     <body>
         <header>
-            <div>
-                <h2 id="view" >View high scores </h1>
+            <div class="begin">
+                <h2 id="view" class='view'>View high scores </h1>
                 <h2 id="countdown" class="timer">Timer</h2>
                 <div class="info" id ="start-screen">
                     <h1 class="welcome">Welcome to the quiz!</h1>
-                    <p> Click the answer for the following questions to test your knowledge on Javascript. Each correct answer will allow you to proceed to the next question, while the wrong answer will penalize you 10 seconds off the timer. You have 60 seconds to complete this quiz. Good luck!</p>
+                    <p class="instruct"> Click the answer for the following questions to test your knowledge on Javascript. Each correct answer will allow you to proceed to the next question, while the wrong answer will penalize you 10 seconds off the timer. You have 60 seconds to complete this quiz. Good luck!</p>
                 <div class="button">
                     <button id="start" class="btn">Start</button>
                 </div>
@@ -30,8 +30,8 @@
                 </div>
             </section>
         </main>
-        <div id="question-answer">
-            <div id="question-title"></div>
+        <div id="question-answer" class="question">
+            <div class="choices" id="question-title"></div>
                 <p id="choices"></p>
                 <p id="message"></p>
             <button id="next" class="btn">Next question</button>

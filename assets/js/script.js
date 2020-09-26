@@ -13,7 +13,7 @@ var timeInterval;
 var initials;
 var timer = document.querySelector('timer');
 var highScoreMessage = document.querySelector('message');
-var submitBtn = document.createElement('button');
+// var submitBtn = document.createElement('button');
 var submitBtn = document.getElementById('submit');
 var done = document.getElementById('test');
 // var userA = this.getAttribute('data-value');
@@ -111,7 +111,8 @@ function startTest() {
     // var score = 0;
     // var startScreenEl = document.getElementById('start-screen');
     document.getElementById('start-screen').style.visibility = 'hidden';
-    
+    //  document.getElementById('submit').style.visibility = "visible"
+    // document.getElementById('initials').style.visibility = 'visible'
     document.getElementById('next').style.visibility = "visible";
     timerEl.textContent = 60
 
@@ -146,17 +147,17 @@ function viewScore() {
 // display message for answers
 function displayScore() {
     console.log('test');
-    document.getElementById('submit').style.visibility = "visible"??
-    document.getElementById('initials').style.visibility = 'visible'??
+    document.querySelector('#submit').style.visibility = "visible";
+    document.getElementById('initials').style.visibility = 'visible';
     console.log('hiiii');
-    document.querySelector('#question-answer').style.visibility = 'hidden'
-    document.querySelector('#next').style.visibility = 'hidden'
+    document.querySelector('#question-answer').style.visibility = 'hidden';
+    document.querySelector('#next').style.visibility = 'hidden';
     
     console.log('hi');
     //find var for timerEl value
     done.textContent = "All done! Your score is " + ""; 
     
-    var intitials = document.getElementById('initials');
+    // var intitials = document.getElementById('initials').value;
     localStorage.setItem('initials', initials);
     // function saveScore() {
     //     
@@ -195,5 +196,5 @@ startBtn.addEventListener("click", startTest);
 document.getElementById('next').style.visibility = 'hidden';
 document.getElementById('submit').style.visibility = "hidden";
 document.getElementById('initials').style.visibility = 'hidden';
-submitBtn.addEventListener("click", displayScore);
+// submitBtn.addEventListener("click", displayScore);
 // highScoreBtn.addEventListener("click", saveScore);
