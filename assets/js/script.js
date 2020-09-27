@@ -150,7 +150,7 @@ var saveScore = function() {
     };
 
     scores.push(userScore);
-    localStorage.setItem(scores, JSON.stringify(scores));
+    localStorage.setItem('score', JSON.stringify(userScore));
     viewScore();
     };
 

@@ -59,11 +59,10 @@ background-color: teal
     margin: auto;
     padding: 25px 0 25px 0;
 }
-
 .question div, .question p {
     display: flex;
     display: center;
-    border: 5px hidden rgb(238, 238, 235);
+    border: 5px hidden;
     width: 80%;
     /* height: 300px; */
     margin: auto;
