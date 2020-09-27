@@ -72,3 +72,33 @@ background-color: teal
     color: white;
     text-align: center;
 }
+.choice {
+    border: solid black;
+    text-align: center;
+    display: block;
+    background-color: white;
+    color: teal;
+    margin: auto;
+    font-size: 18px;
+}
+#test {
+    color: white;
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
+}
+#submit {
+    border: solid black;
+    text-align: center;
+    display: block;
+    background-color: white;
+    color: teal;
+    margin: auto;
+    font-size: 18px;
+}
+#user {
+    margin:auto;
+    font-size: 30px;
+    text-align: center;
+    background-color: white;
+}

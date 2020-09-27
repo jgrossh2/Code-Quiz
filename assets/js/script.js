@@ -1,22 +1,19 @@
 var startBtn = document.querySelector('#start');
 var timerEl = document.getElementById('countdown');
 var choiceEl = document.getElementById('choices');
-// var answerElements = ['answerAElement', 'answerBElement', 'answerCElement', 'answerDElement'];
 var currentQuestionIndex = 0;
 var choiceSelection = document.createElement("button");
 var messageEl = document.getElementById('message');
 var viewScoresBtn = document.querySelector('#view');
 var nextBtn = document.querySelector('#next');
-// var score = 0;
 var timeLeft = 60;
 var timeInterval; 
-var initials;
+var user = document.getElementById('user');
 var timer = document.querySelector('timer');
 var highScoreMessage = document.querySelector('message');
-// var submitBtn = document.createElement('button');
 var submitBtn = document.getElementById('submit');
 var done = document.getElementById('test');
-// var userA = this.getAttribute('data-value');
+var scores = [];
 var questions = [
     {
         q:'A ____ is a predefined action that can be called or used later in the code.',
@@ -91,7 +88,7 @@ function getQuestion() {
         choiceEl.appendChild(choiceSelection);
 
     });
-}   
+};   
 choiceEl.addEventListener("click", myFunction);
     function myFunction(event) {
     currentQuestionIndex++;
@@ -99,20 +96,15 @@ choiceEl.addEventListener("click", myFunction);
     console.log(userA);
     if (userA=='true') {
         messageEl.textContent = 'Correct';
-        
     }
     else {
         messageEl.textContent = 'Wrong';
         timeLeft-=10;
     }
-    }
+};
 
 function startTest() {
-    // var score = 0;
-    // var startScreenEl = document.getElementById('start-screen');
     document.getElementById('start-screen').style.visibility = 'hidden';
-    //  document.getElementById('submit').style.visibility = "visible"
-    // document.getElementById('initials').style.visibility = 'visible'
     document.getElementById('next').style.visibility = "visible";
     timerEl.textContent = 60
 
@@ -122,14 +114,13 @@ function startTest() {
 // timer function
 function timerCount() {
     // start time at 60 sec
-    // var timeLeft = 60;
     timerEl.textContent = timeLeft;
 
     timeInterval = setInterval(function() {
         //set timer to decrease
         timeLeft--;
         timerEl.textContent = timeLeft;
-            
+
         // if timer is 0, stop interval
         if (timeLeft === 0) {
             clearInterval(timeInterval);
@@ -138,55 +129,48 @@ function timerCount() {
         }, 1000);
     };  
 
-function viewScore() {
-
-    location.href = "highscore.html";
-}
 
 
 // display message for answers
 function displayScore() {
-    console.log('test');
     document.querySelector('#submit').style.visibility = "visible";
-    document.getElementById('initials').style.visibility = 'visible';
-    console.log('hiiii');
+    document.getElementById('user').style.visibility = 'visible';
     document.querySelector('#question-answer').style.visibility = 'hidden';
     document.querySelector('#next').style.visibility = 'hidden';
     
-    console.log('hi');
-    //find var for timerEl value
-    done.textContent = "All done! Your score is " + ""; 
-    
-    // var intitials = document.getElementById('initials').value;
-    localStorage.setItem('initials', initials);
-    // function saveScore() {
-    //     
-    //     localStorage.setItem('high score', timeLeft);
-    // };
+    //display score 
+    done.textContent = "All done! Your score is " + timeLeft;
+    var initInput = document.querySelector("user").value;
+
+    var highScoreObject = {
+        id: highScoreIndex,
+        name: initInput,
+        type: timeLeft,
+    };
+    // saveScore();
+};
+var saveScore = function() {
+    //  var initials = user.value;
+    // localStorage.setItem('initials', initials);
+    console.log("object");
+    scores.push(highScoreObject);
+    localStorage.setItem('score', JSON.stringify(scores));
+    // viewScore();
+    };
+var loadScore = function() {
+
 }
-//user input to high Score
-// function highScoreList() {
-//     var score = correctAnswers;
-//     var highscore = localStorage.getItem('highscore', highscore)
-//     var name = localStorage.getItem('name')
-//     var highScoreElement = document.createElement('div')
-//     var submitBtn = document.createElement('BUTTON')
-
-   
-//    document.querySelector('body').appendChild(highScoreElement)
-//    submitBtn.textContent = 'submit';
-
-// //    function highScore() {}
-//    submitBtn.addEventListener("click", function(event) {
-//         event.preventDefault();
+// var highScoreObject = {
+//     id: highScoreIndex,
+//     name: initials,
+//     type: timeLeft,
+// };
 
 
-
-//         localStorage.setItem('highscore', highscore)
-//         localStorage.setItem('name')
-//    });
-// }
-
+function viewScore() {
+    location.href = "highscore.html";
+}
+// saveScore();
 
  //when button is clicked, timer begins
 nextBtn.addEventListener("click", getQuestion);
@@ -194,7 +178,7 @@ viewScoresBtn.addEventListener("click", viewScore);
 startBtn.addEventListener("click", timerCount);
 startBtn.addEventListener("click", startTest);
 document.getElementById('next').style.visibility = 'hidden';
-document.getElementById('submit').style.visibility = "hidden";
-document.getElementById('initials').style.visibility = 'hidden';
-// submitBtn.addEventListener("click", displayScore);
-// highScoreBtn.addEventListener("click", saveScore);
+document.querySelector('#submit').style.visibility = "hidden";
+document.getElementById('user').style.visibility = 'hidden';
+
+submitBtn.addEventListener("click", viewScore);
