@@ -5,9 +5,7 @@ This quiz was created to test the knowledge of Javascript fundamentals. Each of 
 
 
 # Images 
-![Horiseon navigation bar and opening image of employees working at a desk.](./assets/images/webpage-image.png)<br>
-![Horiseon search engine optimization and online reputation management links.](./assets/images/webpage-image-2.png) <br>
-![Horiseon online reputation management and social media marketing links.](./assets/images/webpage-image-3.png)
+![Code-Quiz instruction and start page.](./assets/images/image.png)
 
 
 
