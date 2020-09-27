@@ -129,8 +129,6 @@ function timerCount() {
         }, 1000);
     };  
 
-
-
 // display message for answers
 function displayScore() {
     document.querySelector('#submit').style.visibility = "visible";
@@ -140,37 +138,25 @@ function displayScore() {
     
     //display score 
     done.textContent = "All done! Your score is " + timeLeft;
-    var initInput = document.querySelector("user").value;
-
-    var highScoreObject = {
-        id: highScoreIndex,
-        name: initInput,
-        type: timeLeft,
-    };
-    // saveScore();
 };
+
 var saveScore = function() {
-    //  var initials = user.value;
-    // localStorage.setItem('initials', initials);
-    console.log("object");
-    scores.push(highScoreObject);
-    localStorage.setItem('score', JSON.stringify(scores));
-    // viewScore();
+    var initials = user.value;
+    timerEl.textContent = timeLeft;
+    localStorage.setItem('initials', initials);
+    var userScore = {
+        score: timeLeft,
+        initials: initials
     };
-var loadScore = function() {
 
-}
-// var highScoreObject = {
-//     id: highScoreIndex,
-//     name: initials,
-//     type: timeLeft,
-// };
-
+    scores.push(userScore);
+    localStorage.setItem(scores, JSON.stringify(scores));
+    viewScore();
+    };
 
 function viewScore() {
     location.href = "highscore.html";
 }
-// saveScore();
 
  //when button is clicked, timer begins
 nextBtn.addEventListener("click", getQuestion);
@@ -180,5 +166,4 @@ startBtn.addEventListener("click", startTest);
 document.getElementById('next').style.visibility = 'hidden';
 document.querySelector('#submit').style.visibility = "hidden";
 document.getElementById('user').style.visibility = 'hidden';
-
-submitBtn.addEventListener("click", viewScore);
+submitBtn.addEventListener("click", saveScore);

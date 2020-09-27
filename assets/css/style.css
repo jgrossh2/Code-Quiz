@@ -10,6 +10,12 @@ background-color: teal
     margin: auto;
     display: block;
  } 
+ .begin h2 {
+     display: inline-block;
+ }
+ .timer {
+     padding: 0 0 0 80%;
+ }
  .instruct {
      color: white;
      font-size: 28px;
@@ -25,7 +31,7 @@ background-color: teal
     margin: auto; 
     background-color: white;
     font: teal;
-    font: 32px;
+    font-size: 18px;
 } 
 .view {
     font: 32px;
@@ -51,13 +57,15 @@ background-color: teal
     text-align:center;
     font-size: 32px;
     margin: auto;
+    padding: 25px 0 25px 0;
 }
-.question {
+
+.question div, .question p {
     display: flex;
     display: center;
     border: 5px hidden rgb(238, 238, 235);
     width: 80%;
-    height: 300px;
+    /* height: 300px; */
     margin: auto;
     display: block;
 }
@@ -97,8 +105,9 @@ background-color: teal
     font-size: 18px;
 }
 #user {
-    margin:auto;
+    /* margin: auto; */
     font-size: 30px;
     text-align: center;
     background-color: white;
+    margin: 25px 0 0 600px;
 }
