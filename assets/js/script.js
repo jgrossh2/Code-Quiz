@@ -1,18 +1,16 @@
 var startBtn = document.querySelector('#start');
-var timerEl = document.getElementById('countdown');
-var choiceEl = document.getElementById('choices');
-var currentQuestionIndex = 0;
-var choiceSelection = document.createElement("button");
-var messageEl = document.getElementById('message');
 var viewScoresBtn = document.querySelector('#view');
 var nextBtn = document.querySelector('#next');
-var timeLeft = 60;
-var timeInterval; 
+var timerEl = document.getElementById('countdown');
+var choiceEl = document.getElementById('choices');
 var user = document.getElementById('user');
-var timer = document.querySelector('timer');
-var highScoreMessage = document.querySelector('message');
 var submitBtn = document.getElementById('submit');
 var done = document.getElementById('test');
+var messageEl = document.getElementById('message');
+var choiceSelection = document.createElement("button");
+var currentQuestionIndex = 0;
+var timeLeft = 60;
+var timeInterval; 
 var scores = [];
 var questions = [
     {
